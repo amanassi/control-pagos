@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Facturas</title></head>
+<body>
+  <h2>Facturas</h2>
+  <form method="POST">
+    <select name="proveedor_id">
+      {% for p in proveedores %}
+        <option value="{{ p[0] }}">{{ p[1] }}</option>
+      {% endfor %}
+    </select>
+    <input name="descripcion" placeholder="Descripción">
+    <input name="monto" placeholder="Monto">
+    <button>Agregar</button>
+  </form>
+  <table border="1">
+    <tr><th>Proveedor</th><th>Descripción</th><th>Monto</th><th>Estado</th><th>Acción</th></tr>
+    {% for f in facturas %}
+      <tr>
+        <td>{{ f[1] }}</td><td>{{ f[2] }}</td><td>{{ f[3] }}</td><td>{{ f[5] }}</td>
+        <td><a href="/pagos/{{ f[0] }}">Pagos</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="/">Volver</a>
+</body>
+</html>
